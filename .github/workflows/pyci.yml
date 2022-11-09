@@ -20,10 +20,7 @@ jobs:
         run: |
           pip install poetry
           make install
-      - name: Run linter and pytest
-        run: |
-          make lint
-          make check
+
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v3.0.0
         env:
@@ -31,3 +28,7 @@ jobs:
         with:
           coverageCommand: make test-coverage
           debug: true
+      - name: Run linter and pytest
+        run: |
+          make check
+          make lint
