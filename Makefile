@@ -15,3 +15,9 @@ package-install:
 
 lint:
 	poetry run flake8 gendiff
+
+test:
+	poetry run pytest -vv --cov
+
+test-coverage:
+	poetry run pytest --cov=tests/ --cov-report xml

@@ -15,8 +15,3 @@ from tests.expected_test import STRING_CORRECT
 )
 def test_generate_diff(input1, input2, expected):
         assert generate_diff(input1, input2) == expected
-
-
-
-
-  
