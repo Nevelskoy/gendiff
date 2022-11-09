@@ -11,8 +11,8 @@ def matching_data(data1, data2):
     keys = data1.keys() | data2.keys()
     result = '{\n'
     for key in sorted(keys):
-        if key not in data2:         
-            result += f'  - {key}: {data1[key]}\n'      
+        if key not in data2:
+            result += f'  - {key}: {data1[key]}\n'
         elif key in data2 and key in data1:
             if data1[key] != data2[key]:
                 result += f'  - {key}: {data1[key]}\n'
