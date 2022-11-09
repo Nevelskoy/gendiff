@@ -1,7 +1,7 @@
 install:
 	poetry install
 
-test:
+check:
 	poetry run pytest
 
 build: 
