@@ -1,9 +1,16 @@
 import json
+import yaml
+
 
 def generate_diff(first_file, second_file):
-    '''compare two files'''   
-    first_files_data = json.load(open(first_file))
-    second_files_data = json.load(open(second_file))
+    '''compare two files'''
+    if first_file.endswith('.json'):
+        first_files_data = json.load(open(first_file))
+        second_files_data = json.load(open(second_file))
+    elif first_file.endswith('.yml') or first_file.endswith('.yaml'): 
+        first_files_data = yaml.load(open(first_file), Loader=yaml.SafeLoader)
+        second_files_data = yaml.load(open(second_file), Loader=yaml.SafeLoader)
+    print(first_files_data)
     return matching_data(first_files_data, second_files_data)
 
 
