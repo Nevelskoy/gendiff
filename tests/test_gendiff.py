@@ -4,28 +4,42 @@ from tests import expected_test
 
 
 @pytest.mark.parametrize(
-    "input1, input2, expected1,",
+    "json_1, json_2, expected1,",
     [
         pytest.param(
-        'tests/fixtures/1_flat.json',
-        'tests/fixtures/2_flat.json',
-        expected_test.JSON_CORRECT,
+        'tests/fixtures/flat_json_1.json',
+        'tests/fixtures/flat_json_2.json',
+        expected_test.JSON_FLAT_CORRECT,
         ),
     ],
 )
-def test_json_generate_diff(input1, input2, expected1):
-        assert generate_diff(input1, input2) == expected1
+def test_json_flat(json_1, json_2, expected1):
+        assert generate_diff(json_1, json_2) == expected1
 
 
 @pytest.mark.parametrize(
-    "input3, input4, expected2",
+    "yaml_1, yaml_2, expected2",
     [
         pytest.param(
-        'tests/fixtures/3_flat.yml',
-        'tests/fixtures/4_flat.yml',
-        expected_test.YML_CORRECT,
+        'tests/fixtures/flat_yaml_1.yml',
+        'tests/fixtures/flat_yaml_2.yml',
+        expected_test.YML_FLAT_CORRECT,
         ),
     ],
 )
-def test_yaml_generate_diff(input3, input4, expected2):
-        assert generate_diff(input3, input4) == expected2
+def test_yaml_flat(yaml_1, yaml_2, expected2):
+        assert generate_diff(yaml_1, yaml_2) == expected2
+
+
+@pytest.mark.parametrize(
+    "json_1, json_2, expected3",
+    [
+        pytest.param(
+        'tests/fixtures/nested_json_1.json',
+        'tests/fixtures/nested_json_2.json',
+        expected_test.JSON_NESTED_CORRECT,
+        ),
+    ],
+)
+def test_json_nested(json_1, json_2, expected3):
+        assert generate_diff(json_1, json_2) == expected3
