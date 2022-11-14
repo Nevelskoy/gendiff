@@ -8,8 +8,8 @@ FORMATS = {
     'yml': 'YAML'
     }
 
-
-def read_file(filename):
+#TODO add os, path to file
+def to_read(filename):
     format_file = FORMATS[filename.split('.')[-1]]
     if format_file == 'JSON':
         files_data = json.load(open(filename))

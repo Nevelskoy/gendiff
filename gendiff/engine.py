@@ -1,10 +1,10 @@
-from  gendiff.file_parse import read_file
+from  gendiff.read_file import to_read
 
 
 def generate_diff(first_file, second_file):
     '''compare two files'''
-    first_files_data = read_file(first_file)
-    second_files_data = read_file(second_file)
+    first_files_data = to_read(first_file)
+    second_files_data = to_read(second_file)
     return matching_data(first_files_data, second_files_data)
 
 
