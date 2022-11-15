@@ -16,7 +16,7 @@ YML_FLAT_CORRECT = '''{
   + verbose: True
 }'''
 
-JSON_NESTED_CORRECT = '''{
+NESTED_CORRECT = '''{
     common: {
       + follow: false
         setting1: Value 1
