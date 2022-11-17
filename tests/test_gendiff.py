@@ -49,11 +49,11 @@ def test_json_nested(json_1, json_2, expected3):
     "yaml_1, yaml_2, expected4",
     [
         pytest.param(
-        'tests/fixtures/nested_yaml_1.yaml',
-        'tests/fixtures/nested_yaml_2.yaml',
+        'tests/fixtures/nested_yaml_1.yml',
+        'tests/fixtures/nested_yaml_2.yml',
         expected_test.NESTED_CORRECT,
         ),
     ],
 )
-def test_yaml_nested(json_1, json_2, expected4):
-        assert generate_diff(json_1, json_2) == expected4
+def test_yaml_nested(yaml_1, yaml_2, expected4):
+        assert generate_diff(yaml_1, yaml_2) == expected4
