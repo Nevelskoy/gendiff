@@ -1,7 +1,8 @@
 import itertools
-from gendiff.formatter import diff_dict
+from gendiff.formatter import pretty_stylish, format_value
 
-def get_diff(first, second, key):
+
+def _get_diff_list(first, second, key):
     if isinstance(first.get(key), dict) and isinstance(second.get(key), dict):
         return
       
@@ -25,27 +26,27 @@ def get_diff_data(first, second):
             nested_dictionary = get_diff_data(first_value, second_value)
             result.append(('dictionary', key, nested_dictionary))
         else:
-            result.append(get_diff(first, second, key))
+            result.append(_get_diff_list(first, second, key))
     return result
 
 
-def from_diff_to_dict(diff):
+def _from_diff_list_to_dict(diff):
     result_dict = {}
     for tuple in diff:
         state, key, value = tuple
         if state == 'dictionary':
-            nested = from_diff_to_dict(value)
-            result_dict.update(diff_dict(state, key, nested))
+            nested = _from_diff_list_to_dict(value)
+            result_dict.update(pretty_stylish(state, key, nested))
         else:
-            result_dict.update(diff_dict(state, key, value))
+            result_dict.update(pretty_stylish(state, key, value))
     return result_dict
 
 
 def stringify_diff(value, replacer=' ', spaces_count=4):
-    result_dict = from_diff_to_dict(value)
+    result_dict = _from_diff_list_to_dict(value)
     def inner(current_value, depth):
         if not isinstance(current_value, dict):
-            return str(current_value)
+            return format_value(current_value)
             
         deep_indent_size = depth + spaces_count
         deep_indent = replacer * deep_indent_size
