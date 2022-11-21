@@ -52,8 +52,11 @@ def stringify_diff(value, replacer=' ', spaces_count=4):
         current_indent = replacer * depth
         lines = []      
         for key, val in current_value.items():
-            lines.append(f'{deep_indent}{key}: {inner(val, deep_indent_size)}')
+            if key[0] == '+' or key[0] == '-':
+                sign_indent = replacer * (deep_indent_size - 2)
+                lines.append(f'{sign_indent}{key}: {inner(val, deep_indent_size)}')
+            else:
+                lines.append(f'{deep_indent}{key}: {inner(val, deep_indent_size)}')
         result = itertools.chain("{", lines, [current_indent + "}"])
         return '\n'.join(result)
-
     return inner(result_dict, 0)
