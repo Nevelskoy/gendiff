@@ -1,7 +1,7 @@
 DUMMY = '[complex value]'
 
 
-def set_value_format(value):
+def _set_value_format(value):
     if isinstance(value, bool):
         return 'true' if value else 'false'
     elif value is None:
@@ -19,15 +19,15 @@ def _put_dummy(value):
         if isinstance(value[0], dict):
             new_value[0] = DUMMY
         else:
-            new_value[0] = set_value_format(value[0])
+            new_value[0] = _set_value_format(value[0])
             
         if isinstance(value[1], dict):
             new_value[1] = DUMMY
         else:
-            new_value[1] = set_value_format(value[1])
+            new_value[1] = _set_value_format(value[1])
             
         return tuple(new_value)
-    return set_value_format(value)
+    return _set_value_format(value)
 
 
 def _plain_format(state, pipline, value):

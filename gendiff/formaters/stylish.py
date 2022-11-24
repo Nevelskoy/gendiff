@@ -1,5 +1,4 @@
 import itertools
-from gendiff.formaters.format_data import set_value_format
 
 
 def _dict_stylish(state, key, value):       
@@ -28,11 +27,19 @@ def _from_diff_list_to_dict(diff):
     return result_dict
 
 
+def _set_value_format(value):
+    if isinstance(value, bool):
+        return 'true' if value else 'false'
+    if value is None:
+        return 'null'
+    return str(value)
+
+
 def stringify_stylish(value, replacer=' ', spaces_count=4):
     result_dict = _from_diff_list_to_dict(value)
     def inner(current_value, depth):
         if not isinstance(current_value, dict):
-            return set_value_format(current_value)
+            return _set_value_format(current_value)
             
         deep_indent_size = depth + spaces_count
         deep_indent = replacer * deep_indent_size
