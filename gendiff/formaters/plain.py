@@ -34,11 +34,11 @@ def _plain_format(state, pipline, value):
     value = _put_dummy(value)
     buffer_plain = ''
     if state == 'added':
-        buffer_plain = f"Property '{pipline}' was added with value: {value}\n"
+        buffer_plain = f"Property '{pipline}' was added with value: {value}"
     elif state == 'deleted':
-        buffer_plain = f"Property '{pipline}' was removed\n"
+        buffer_plain = f"Property '{pipline}' was removed"
     elif state == 'changed':
-        buffer_plain = f"Property '{pipline}' was updated. From {value[0]} to {value[1]}\n"
+        buffer_plain = f"Property '{pipline}' was updated. From {value[0]} to {value[1]}"
 
     return buffer_plain
 
@@ -55,5 +55,5 @@ def stringify_plain(data):
             else:
                 path_key = f'{key}.'
                 result.append(inner(path_key, value))               
-        return ''.join(result)
+        return '\n'.join((list(filter(lambda x: len(x), result))))
     return inner('', data)
