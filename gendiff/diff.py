@@ -13,14 +13,14 @@ def _get_diff_list(first, second, key):
 
 
 def get_diff_data(first, second):
-    result = []
+    diff_data = []
     keys = first.keys() | second.keys()
     for key in sorted(keys):
         first_value = first.get(key)
         second_value = second.get(key)
         if isinstance(first_value, dict) and isinstance(second_value, dict):
             nested_dictionary = get_diff_data(first_value, second_value)
-            result.append(('dictionary', key, nested_dictionary))
+            diff_data.append(('dictionary', key, nested_dictionary))
         else:
-            result.append(_get_diff_list(first, second, key))
-    return result
+            diff_data.append(_get_diff_list(first, second, key))
+    return diff_data

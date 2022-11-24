@@ -57,3 +57,17 @@ def test_json_nested(json_1, json_2, expected3):
 )
 def test_yaml_nested(yaml_1, yaml_2, expected4):
         assert generate_diff(yaml_1, yaml_2) == expected4
+
+
+@pytest.mark.parametrize(
+    "json_1, json_2, expected5",
+    [
+        pytest.param(
+        'tests/fixtures/nested_json_1.json',
+        'tests/fixtures/nested_json_2.json',
+        expected_test.PLAIN_FORMAT,
+        ),
+    ],
+)
+def test_json_plain_format(json_1, json_2, expected5):
+        assert generate_diff(json_1, json_2, 'plain') == expected5
