@@ -55,5 +55,5 @@ def stringify_plain(data):
             else:
                 path_key = f'{key}.'
                 result.append(inner(path_key, value))               
-        return '\n'.join((list(filter(lambda x: len(x), result))))
+        return '\n'.join((list(filter(None, result))))
     return inner('', data)
