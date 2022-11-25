@@ -23,4 +23,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-gendiffer = "gendiff.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main"
