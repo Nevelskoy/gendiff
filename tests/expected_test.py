@@ -75,7 +75,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]'''
 
 
-JSON_FORMAT ='''[
+JSON_FORMAT = '''[
   {
     "status": "nested",
     "key": "common",
