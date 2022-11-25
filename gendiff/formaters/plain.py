@@ -29,17 +29,16 @@ def _put_dummy(value):
     return _set_value_format(value)
 
 
-def _plain_format(state, pipline, value):
-    value = _put_dummy(value)
+def _plain_format(state, path, val):
+    val = _put_dummy(val)
     buffer_plain = ''
     if state == 'added':
-        buffer_plain = f"Property '{pipline}' was added with value: {value}"
+        buffer_plain = f"Property '{path}' was added with value: {val}"
     elif state == 'deleted':
-        buffer_plain = f"Property '{pipline}' was removed"
+        buffer_plain = f"Property '{path}' was removed"
     elif state == 'changed':
-        buffer_plain = f"Property '{pipline}' was updated.\
-                         From {value[0]} to {value[1]}"
-
+        buffer_plain = f"Property '{path}' was updated."\
+            f' From {val[0]} to {val[1]}'
     return buffer_plain
 
 
