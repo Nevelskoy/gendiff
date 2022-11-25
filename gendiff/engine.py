@@ -15,13 +15,18 @@ def _output_data(data, format_name):
         return stringify_json(data)
 
 
-def generate_diff(first_file, second_file, format="stylish"):
+def generate_diff(first_file, second_file, format_output="stylish"):
     '''compare two files'''
+    if not format_output:
+        format_output = 'stylish'
+    
     first_data = to_read(first_file)
     second_data = to_read(second_file)
-    if format == "json":
+
+    if format_output == "json":
         diff_data = get_diff_dict(first_data, second_data)
     else: 
         diff_data = get_diff_list(first_data, second_data)  
-    return _output_data(diff_data, format)
+        
+    return _output_data(diff_data, format_output)
 
