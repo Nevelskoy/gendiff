@@ -1,14 +1,14 @@
 def _form_list(first, second, key):
     if isinstance(first.get(key), dict) and isinstance(second.get(key), dict):
         return
-      
+
     if key not in first:
         return ('added', key, second.get(key))
     elif key not in second:
         return ('deleted', key, first.get(key))
     elif first.get(key) == second.get(key):
         return ('unchanged', key, first.get(key))
-    else: 
+    else:
         return ('changed', key, (first.get(key), second.get(key)))
 
 

@@ -20,12 +20,11 @@ def _put_dummy(value):
             new_value[0] = DUMMY
         else:
             new_value[0] = _set_value_format(value[0])
-            
+
         if isinstance(value[1], dict):
             new_value[1] = DUMMY
         else:
             new_value[1] = _set_value_format(value[1])
-            
         return tuple(new_value)
     return _set_value_format(value)
 
@@ -38,7 +37,8 @@ def _plain_format(state, pipline, value):
     elif state == 'deleted':
         buffer_plain = f"Property '{pipline}' was removed"
     elif state == 'changed':
-        buffer_plain = f"Property '{pipline}' was updated. From {value[0]} to {value[1]}"
+        buffer_plain = f"Property '{pipline}' was updated.\
+                         From {value[0]} to {value[1]}"
 
     return buffer_plain
 
@@ -50,10 +50,10 @@ def stringify_plain(data):
         for tuple in value_data:
             state, key, value = tuple
             key = f'{pipline}{key}'
-            if state != 'dictionary':            
+            if state != 'dictionary':
                 result.append(_plain_format(state, key, value))
             else:
                 path_key = f'{key}.'
-                result.append(inner(path_key, value))               
+                result.append(inner(path_key, value))
         return '\n'.join((list(filter(None, result))))
     return inner('', data)

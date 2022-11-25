@@ -6,7 +6,7 @@ FORMATS = {
     'json': 'JSON',
     'yaml': 'YAML',
     'yml': 'YAML'
-    }
+}
 
 
 def to_read(filename):
@@ -17,4 +17,3 @@ def to_read(filename):
         elif format_file == 'YAML':
             files_data = yaml.load((rf), Loader=yaml.SafeLoader)
         return files_data
-    
