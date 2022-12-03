@@ -59,7 +59,7 @@ NESTED_CORRECT = '''{
         }
         fee: 100500
     }
-}''' #noqa
+}''' # noqa
 
 
 PLAIN_FORMAT = '''Property 'common.follow' was added with value: false
