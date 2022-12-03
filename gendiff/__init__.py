@@ -1,4 +1,4 @@
-'''Find difference in two files'''
+'''Find difference relative to first file'''
 
 from gendiff.engine import generate_diff
 

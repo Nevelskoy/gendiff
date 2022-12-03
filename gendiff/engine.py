@@ -1,4 +1,4 @@
-'''Get difference message for two files'''
+'''Get difference data for two files'''
 
 from gendiff.reader import to_read
 from gendiff.formaters.diff import get_diff_list

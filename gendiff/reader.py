@@ -1,4 +1,4 @@
-'''Function to read a file and return its content'''
+'''Function to read a file'''
 
 import yaml
 import json
