@@ -1,6 +1,8 @@
-from gendiff.read_file import to_read
-from gendiff.diff import get_diff_list
-from gendiff.diff import get_diff_dict
+'''Get difference message for two files'''
+
+from gendiff.reader import to_read
+from gendiff.formaters.diff import get_diff_list
+from gendiff.formaters.diff import get_diff_dict
 from gendiff.formaters.stylish import stringify_stylish
 from gendiff.formaters.plain import stringify_plain
 from gendiff.formaters.json import stringify_json
@@ -16,7 +18,14 @@ def _output_data(data, format_name):
 
 
 def generate_diff(first_file, second_file, format_output="stylish"):
-    '''compare two files'''
+    '''Get difference between two files.
+    Args:
+        first_file (str): path to the first file
+        second_file (str): path to the second file
+        format_output (str): format of the output message
+    Returns:
+        str: description of changes in the first file
+    '''
     if not format_output:
         format_output = 'stylish'
 

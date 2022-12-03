@@ -1,4 +1,4 @@
-"""Main module"""
+'''Find difference in two files'''
 
 from gendiff.engine import generate_diff
 

@@ -1,3 +1,5 @@
+'''Main module'''
+
 import argparse
 from gendiff.engine import generate_diff
 
@@ -7,6 +9,10 @@ HELP = 'set format of output'
 
 
 def main():
+    '''Get difference between two files.
+    Returns:
+        str: description of files differences
+    '''
     parser = argparse.ArgumentParser(description=DESCRIPTION)
 
     parser.add_argument('first_file', type=str)
