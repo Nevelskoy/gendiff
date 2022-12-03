@@ -1,6 +1,6 @@
 import pytest
 from gendiff.engine import generate_diff
-from tests import expected_test
+from tests.fixtures import expected_test
 
 
 @pytest.mark.parametrize(
