@@ -27,7 +27,4 @@ jobs:
           CC_TEST_REPORTER_ID: 8a8fe42fdc5e3da70991838dae4b775fb14cf7b1ba6addd03b7bcb41924d3736
         with:
           coverageCommand: make test-coverage
-          debug: true      
-      - name: Run linter and pytest
-        run: |
-          make check
+          debug: true
